@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: cardex
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: SCANS_PER_IP_PER_DAY
+        value: 10

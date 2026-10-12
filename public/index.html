@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0E1230">
+  <title>Cardex – Spot a car, collect the card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <section id="view-scan" class="view" aria-labelledby="t-scan">
+      <h1 id="t-scan">Spot a car</h1>
+      <div id="viewfinder" class="viewfinder">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <p id="vf-text">Frame the whole car, then scan.</p>
+        <div class="sweep"></div>
+      </div>
+      <input id="file" type="file" accept="image/*" capture="environment" hidden>
+      <button id="scan-btn" class="primary" type="button">Scan a car</button>
+      <button id="pick-btn" class="link" type="button">Choose a photo instead</button>
+      <p id="scan-error" class="error" role="alert" hidden></p>
+    </section>
+
+    <section id="view-garage" class="view" aria-labelledby="t-garage" hidden>
+      <h1 id="t-garage">Garage</h1>
+      <div class="toolbar">
+        <div id="chips" class="chips" role="group" aria-label="Filter by rarity"></div>
+        <label class="sort">Sort
+          <select id="sort">
+            <option value="new">Newest</option>
+            <option value="value">Highest value</option>
+            <option value="rarity">Rarest</option>
+          </select>
+        </label>
+      </div>
+      <div id="grid" class="grid"></div>
+      <p id="empty" class="empty" hidden>Your garage is empty. Scan a car and its card will show up here.</p>
+    </section>
+
+    <section id="view-profile" class="view" aria-labelledby="t-profile" hidden>
+      <h1 id="t-profile">Profile</h1>
+      <div class="rank">
+        <div class="rank-top"><span id="rank-name" class="rank-name"></span><span id="xp" class="xp"></span></div>
+        <div class="bar"><i id="bar-fill"></i></div>
+        <p id="rank-next" class="muted"></p>
+      </div>
+      <dl id="stats" class="profile-stats"></dl>
+      <div class="settings">
+        <label class="check"><input id="loc" type="checkbox"> Save where I spotted each car</label>
+        <p class="muted">Your garage is stored in this browser. Export a backup before clearing site data or switching phones.</p>
+        <div class="row">
+          <button id="export" class="secondary" type="button">Export garage</button>
+          <button id="import-btn" class="secondary" type="button">Import garage</button>
+          <input id="import" type="file" accept="application/json" hidden>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabs" aria-label="Main">
+    <button data-view="scan" aria-current="page">Scan</button>
+    <button data-view="garage">Garage <span id="count" class="count">0</span></button>
+    <button data-view="profile">Profile</button>
+  </nav>
+
+  <dialog id="detail" aria-label="Card details"></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

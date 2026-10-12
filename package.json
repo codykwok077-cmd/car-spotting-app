@@ -1,0 +1,13 @@
+{
+  "name": "cardex-clone",
+  "version": "1.0.0",
+  "description": "Spot a car, identify it with AI, and collect it as a trading card.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": { "express": "^4.19.2" }
+}
